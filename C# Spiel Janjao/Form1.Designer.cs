@@ -28,20 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Title = new TextBox();
             button2 = new Button();
             Close = new Button();
             Start = new Button();
             SuspendLayout();
-            // 
-            // Title
-            // 
-            Title.Font = new Font("Showcard Gothic", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Title.Location = new Point(75, 50);
-            Title.Name = "Title";
-            Title.Size = new Size(415, 57);
-            Title.TabIndex = 0;
-            Title.Text = "Place holder Title";
             // 
             // button2
             // 
@@ -80,17 +70,13 @@
             Controls.Add(Start);
             Controls.Add(Close);
             Controls.Add(button2);
-            Controls.Add(Title);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private TextBox Title;
         private Button button2;
         private Button Close;
         private Button Start;
