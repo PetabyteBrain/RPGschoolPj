@@ -13,13 +13,21 @@ namespace C__Spiel_Janjao
 {
     public partial class Start : Form
     {
-
+        private int enemydamageradius = 60;
         private int enemyHealth = 100;
+        int enemydamage = 5;
+        private int playerHealth = 100;
+        int playerdamage = 10;
+        int XPamount = 0;
+        int weapondamage = 0;
         private int distance = 7;
         private bool movingUp, movingDown, movingLeft, movingRight;
+        Label PlayerhealthLabel = new Label();
         public Start()
         {
             InitializeComponent();
+            UpdatePlayerHealthLabel();
+            UpdateHealthLabel();
             this.KeyPreview = true;
             this.KeyDown += MoveControl;
             this.KeyUp += Start_KeyUp;
@@ -43,6 +51,27 @@ namespace C__Spiel_Janjao
         {
             // Update health label text with current health value
             healthLabel.Text = $"Health: {enemyHealth}";
+        }
+        private void UpdatePlayerHealthLabelPosition()
+        {
+            // Update health label position relative to the picture box
+            PlayerhealthLabel.Location = new Point(
+                pictureBox1.Left - 25, pictureBox1.Top - 25); // Adjust the vertical offset as needed
+        }
+        private void UpdatePlayerHealthLabel()
+        {
+            // Update health label text with current health value
+            PlayerhealthLabel.Text = $"Health: {playerHealth}";
+
+            PlayerhealthLabel.AutoSize = true;
+            PlayerhealthLabel.Font = new Font("Calibri", 10);
+            PlayerhealthLabel.ForeColor = Color.Black;
+            PlayerhealthLabel.Padding = new Padding(6);
+            this.Controls.Add(PlayerhealthLabel);
+        }
+        private void UpdateXPLabel()
+        {
+            label1.Text = $"XP: {XPamount}";
         }
         private void MoveControl(object sender, KeyEventArgs e)
         {
@@ -122,6 +151,8 @@ namespace C__Spiel_Janjao
             }
 
             UpdateHealthLabelPosition();
+            UpdatePlayerHealthLabelPosition();
+            CheckPLayerDamage();
         }
 
 
@@ -132,7 +163,7 @@ namespace C__Spiel_Janjao
 
         private void takeDMG(object sender, EventArgs e)
         {
-            enemyHealth -= 10; // You can adjust the amount of damage per click
+            enemyHealth -= playerdamage + weapondamage; // You can adjust the amount of damage per click
 
             // Update health bar
             UpdateHealthLabel(); // Update health label
@@ -140,6 +171,8 @@ namespace C__Spiel_Janjao
             // Check if enemy health is zero or below
             if (enemyHealth <= 0)
             {
+                XPamount += 10;
+                UpdateXPLabel();
                 // Remove the enemy from the form
                 Controls.Remove(pictureBox2);
                 pictureBox2.Dispose(); // Clean up resources
@@ -150,8 +183,36 @@ namespace C__Spiel_Janjao
                 UpdateHealthLabelPosition(); // Update health label position
             }
         }
+        private void PlayerDamage()
+        {
+            if (playerHealth > 0)
+            {
+                playerHealth -= enemydamage;
+                UpdatePlayerHealthLabel();
+            }
+            
 
-        
+            if (playerdamage <= 0)
+            {
+                bool Gameover = true;
+            }
+            else
+            {
+                UpdatePlayerHealthLabel();
+            }
+        }
+        private void CheckPLayerDamage()
+        {
+            if(pictureBox2.Location.X <= pictureBox1.Location.X + enemydamageradius && pictureBox2.Location.X >= pictureBox1.Location.X - enemydamageradius)
+            {
+                if (pictureBox2.Location.Y <= pictureBox1.Location.Y + enemydamageradius && pictureBox2.Location.Y >= pictureBox1.Location.Y - enemydamageradius)
+                {
+                    PlayerDamage();
+                }
+            }
+        }
+
+
 
         private void healthLabel_Click(object sender, EventArgs e)
         {
@@ -160,6 +221,16 @@ namespace C__Spiel_Janjao
 
 
         private void Start_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
