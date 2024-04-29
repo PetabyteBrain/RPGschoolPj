@@ -34,6 +34,7 @@
             timer1 = new System.Windows.Forms.Timer(components);
             pictureBox2 = new PictureBox();
             healthLabel = new Label();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -57,10 +58,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
-            // 
-            // timer1
-            // 
-            
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // pictureBox2
             // 
@@ -82,11 +80,22 @@
             healthLabel.TabIndex = 7;
             healthLabel.Click += healthLabel_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Impact", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(223, 29);
+            label1.Name = "label1";
+            label1.Size = new Size(80, 35);
+            label1.TabIndex = 8;
+            label1.Text = "XP : 0";
+            // 
             // Start
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(942, 493);
+            Controls.Add(label1);
             Controls.Add(healthLabel);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
@@ -111,5 +120,6 @@
         private PictureBox pictureBox2;
         private Label healthLabel;
         private System.Windows.Forms.Timer TimerEnemySpawn_Tick;
+        private Label label1;
     }
 }
