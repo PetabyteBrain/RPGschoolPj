@@ -15,7 +15,7 @@ namespace C__Spiel_Janjao
     {
         private int enemydamageradius = 60;
         private int enemyHealth = 100;
-        int enemydamage = 5;
+        int enemydamage = 2;
         private int playerHealth = 100;
         int playerdamage = 10;
         int XPamount = 0;
@@ -192,9 +192,13 @@ namespace C__Spiel_Janjao
             }
             
 
-            if (playerdamage <= 0)
+            if (playerdamage == 0)
             {
                 bool Gameover = true;
+                if (Gameover)
+                {
+                    pictureBox1.Dispose();
+                }
             }
             else
             {
@@ -210,8 +214,19 @@ namespace C__Spiel_Janjao
                     PlayerDamage();
                 }
             }
+            if(playerHealth == 0)
+            {
+                pictureBox1.Dispose();
+                
+            }
         }
-
+        private void regen()
+        {
+            if(playerHealth > 0)
+            {
+                playerHealth += 1;
+            }
+        }
 
 
         private void healthLabel_Click(object sender, EventArgs e)
