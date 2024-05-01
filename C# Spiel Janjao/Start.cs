@@ -23,6 +23,9 @@ namespace C__Spiel_Janjao
         private int distance = 7;
         private bool movingUp, movingDown, movingLeft, movingRight;
         Label PlayerhealthLabel = new Label();
+
+        bool enemy1dead = false;
+
         public Start()
         {
             InitializeComponent();
@@ -114,6 +117,7 @@ namespace C__Spiel_Janjao
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //Border
             if (movingRight && pictureBox1.Right + distance <= ClientSize.Width)
             {
                 pictureBox1.Left = Math.Min(ClientSize.Width - pictureBox1.Width, pictureBox1.Left + distance);
@@ -130,24 +134,25 @@ namespace C__Spiel_Janjao
             {
                 pictureBox1.Top = Math.Max(0, pictureBox1.Top - distance);
             }
-
-            if (pictureBox2.Location.X < pictureBox1.Location.X + 50)
+            // Enemy Follow Player
+            if (enemy1dead == false)
             {
-                pictureBox2.Left = Math.Min(ClientSize.Width - pictureBox2.Width, pictureBox2.Left + (distance / 3));
-            }
-            if (pictureBox2.Location.X > pictureBox1.Location.X - 50)
-            {
-                pictureBox2.Left = Math.Max(0, pictureBox2.Left - (distance / 3));
-            }
-
-
-            if (pictureBox2.Location.Y < pictureBox1.Location.Y + 50)
-            {
-                pictureBox2.Top = Math.Min(ClientSize.Height - pictureBox2.Height, pictureBox2.Top + (distance / 3));
-            }
-            if (pictureBox2.Location.Y > pictureBox1.Location.Y - 50)
-            {
-                pictureBox2.Top = Math.Max(0, pictureBox2.Top - (distance / 3));
+                if (pictureBox2.Location.X < pictureBox1.Location.X + 50)
+                {
+                    pictureBox2.Left = Math.Min(ClientSize.Width - pictureBox2.Width, pictureBox2.Left + (distance / 3));
+                }
+                if (pictureBox2.Location.X > pictureBox1.Location.X - 50)
+                {
+                    pictureBox2.Left = Math.Max(0, pictureBox2.Left - (distance / 3));
+                }
+                if (pictureBox2.Location.Y < pictureBox1.Location.Y + 50)
+                {
+                    pictureBox2.Top = Math.Min(ClientSize.Height - pictureBox2.Height, pictureBox2.Top + (distance / 3));
+                }
+                if (pictureBox2.Location.Y > pictureBox1.Location.Y - 50)
+                {
+                    pictureBox2.Top = Math.Max(0, pictureBox2.Top - (distance / 3));
+                }
             }
 
             UpdateHealthLabelPosition();
@@ -173,6 +178,7 @@ namespace C__Spiel_Janjao
             {
                 XPamount += 10;
                 UpdateXPLabel();
+                enemy1dead = true;
                 // Remove the enemy from the form
                 Controls.Remove(pictureBox2);
                 pictureBox2.Dispose(); // Clean up resources
@@ -185,7 +191,7 @@ namespace C__Spiel_Janjao
         }
         private void PlayerDamage()
         {
-            if (playerHealth > 0)
+            if (playerHealth > 0 && enemy1dead == false)
             {
                 playerHealth -= enemydamage;
                 UpdatePlayerHealthLabel();
