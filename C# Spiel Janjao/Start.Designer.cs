@@ -35,6 +35,7 @@
             pictureBox2 = new PictureBox();
             healthLabel = new Label();
             label1 = new Label();
+            regentimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -59,6 +60,10 @@
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
+            // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick_1;
             // 
             // pictureBox2
             // 
@@ -89,6 +94,11 @@
             label1.Size = new Size(80, 35);
             label1.TabIndex = 8;
             label1.Text = "XP : 0";
+            // 
+            // regentimer
+            // 
+            regentimer.Interval = 1000;
+            regentimer.Tick += regentimer_Tick;
             // 
             // Start
             // 
@@ -121,5 +131,6 @@
         private Label healthLabel;
         private System.Windows.Forms.Timer TimerEnemySpawn_Tick;
         private Label label1;
+        private System.Windows.Forms.Timer regentimer;
     }
 }
