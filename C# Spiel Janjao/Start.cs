@@ -222,7 +222,7 @@ namespace C__Spiel_Janjao
                     PlayerDamage();
                 }
             }
-            if (playerHealth == 0)
+            if (playerHealth <= 0)
             {
                 pictureBox1.Dispose();
                 timer1.Stop();
