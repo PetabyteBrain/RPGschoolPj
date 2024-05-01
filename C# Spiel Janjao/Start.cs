@@ -37,6 +37,7 @@ namespace C__Spiel_Janjao
             timer1.Interval = 50;
             timer1.Tick += timer1_Tick;
             timer1.Start();
+            regentimer.Start();
         }
         private void Close_Click(object sender, EventArgs e)
         {
@@ -137,6 +138,7 @@ namespace C__Spiel_Janjao
             // Enemy Follow Player
             if (enemy1dead == false)
             {
+
                 if (pictureBox2.Location.X < pictureBox1.Location.X + 50)
                 {
                     pictureBox2.Left = Math.Min(ClientSize.Width - pictureBox2.Width, pictureBox2.Left + (distance / 3));
@@ -196,7 +198,7 @@ namespace C__Spiel_Janjao
                 playerHealth -= enemydamage;
                 UpdatePlayerHealthLabel();
             }
-            
+
 
             if (playerdamage == 0)
             {
@@ -213,14 +215,14 @@ namespace C__Spiel_Janjao
         }
         private void CheckPLayerDamage()
         {
-            if(pictureBox2.Location.X <= pictureBox1.Location.X + enemydamageradius && pictureBox2.Location.X >= pictureBox1.Location.X - enemydamageradius)
+            if (pictureBox2.Location.X <= pictureBox1.Location.X + enemydamageradius && pictureBox2.Location.X >= pictureBox1.Location.X - enemydamageradius)
             {
                 if (pictureBox2.Location.Y <= pictureBox1.Location.Y + enemydamageradius && pictureBox2.Location.Y >= pictureBox1.Location.Y - enemydamageradius)
                 {
                     PlayerDamage();
                 }
             }
-            if(playerHealth == 0)
+            if (playerHealth == 0)
             {
                 pictureBox1.Dispose();
                 timer1.Stop();
@@ -231,10 +233,15 @@ namespace C__Spiel_Janjao
         }
         private void regen()
         {
-            if(playerHealth > 0)
+            if (playerHealth > 0 && playerHealth < 100)
             {
                 playerHealth += 1;
+                UpdatePlayerHealthLabel();
             }
+        }
+        private void enemyspawn()
+        {
+
         }
 
 
@@ -255,6 +262,50 @@ namespace C__Spiel_Janjao
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void regentimer_Tick(object sender, EventArgs e)
+        {
+            int regentick = 0;
+            if (regentick == 0)
+            {
+                regen();
+                regentick += 1;
+            }
+            if(regentick == 1)
+            {
+                regentick -= 1;
+            }
+            else
+            {
+                regen();
+                regentick = 0;
+            }
+
+        }
+
+        private void TimerEnemySpawn_Tick(object sender, EventArgs e)
+        {
+            int EnemySpawnTick = 0;
+            if (EnemySpawnTick == 0)
+            {
+                enemyspawn();
+                EnemySpawnTick += 1;
+            }
+            if (EnemySpawnTick == 1)
+            {
+                EnemySpawnTick -= 1;
+            }
+            else
+            {
+                enemyspawn();
+                EnemySpawnTick = 0;
+            }
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
         {
 
         }
