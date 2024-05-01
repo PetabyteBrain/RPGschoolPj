@@ -36,6 +36,7 @@
             healthLabel = new Label();
             label1 = new Label();
             regentimer = new System.Windows.Forms.Timer(components);
+            TimerEnemySpawn = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -100,6 +101,10 @@
             regentimer.Interval = 1000;
             regentimer.Tick += regentimer_Tick;
             // 
+            // TimerEnemySpawn
+            // 
+            TimerEnemySpawn.Interval = 1000;
+            // 
             // Start
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -129,8 +134,8 @@
         private System.Windows.Forms.Timer timer1;
         private PictureBox pictureBox2;
         private Label healthLabel;
-        private System.Windows.Forms.Timer TimerEnemySpawn_Tick;
         private Label label1;
         private System.Windows.Forms.Timer regentimer;
+        private System.Windows.Forms.Timer TimerEnemySpawn;
     }
 }

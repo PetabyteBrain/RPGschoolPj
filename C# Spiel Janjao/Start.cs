@@ -239,7 +239,10 @@ namespace C__Spiel_Janjao
                 UpdatePlayerHealthLabel();
             }
         }
+        private void enemyspawn()
+        {
 
+        }
 
 
         private void healthLabel_Click(object sender, EventArgs e)
@@ -281,6 +284,25 @@ namespace C__Spiel_Janjao
                 regentick = 0;
             }
 
+        }
+
+        private void TimerEnemySpawn_Tick(object sender, EventArgs e)
+        {
+            int EnemySpawnTick = 0;
+            if (EnemySpawnTick == 0)
+            {
+                enemyspawn();
+                EnemySpawnTick += 1;
+            }
+            if (EnemySpawnTick == 1)
+            {
+                EnemySpawnTick -= 1;
+            }
+            else
+            {
+                enemyspawn();
+                EnemySpawnTick = 0;
+            }
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
