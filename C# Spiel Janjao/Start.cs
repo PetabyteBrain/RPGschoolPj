@@ -217,7 +217,10 @@ namespace C__Spiel_Janjao
             if(playerHealth == 0)
             {
                 pictureBox1.Dispose();
-                
+                timer1.Stop();
+                string gameover = "Game over";
+                MessageBox.Show(gameover);
+                Application.Exit();
             }
         }
         private void regen()

@@ -51,7 +51,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.sanspic50;
+            pictureBox1.BackColor = Color.Lime;
             pictureBox1.Location = new Point(430, 240);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(50, 50);
@@ -62,7 +62,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.sanspic50;
+            pictureBox2.BackColor = Color.Red;
             pictureBox2.Location = new Point(698, 240);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(50, 50);
