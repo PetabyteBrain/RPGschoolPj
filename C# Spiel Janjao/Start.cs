@@ -24,7 +24,24 @@ namespace C__Spiel_Janjao
         private bool movingUp, movingDown, movingLeft, movingRight;
         Label PlayerhealthLabel = new Label();
 
+        // Enemy State
         bool enemy1dead = false;
+        bool enemy2dead = false;
+        bool enemy3dead = false;
+        bool enemy4dead = false;
+        bool enemy5dead = false;
+        bool enemy6dead = false;
+        bool enemy7dead = false;
+        bool enemy8dead = false;
+
+        // Enemies
+        PictureBox Enemy2 = new PictureBox();
+        PictureBox Enemy3 = new PictureBox();
+        PictureBox Enemy4 = new PictureBox();
+        PictureBox Enemy5 = new PictureBox();
+        PictureBox Enemy7 = new PictureBox();
+        PictureBox Enemy8 = new PictureBox();
+
 
         public Start()
         {
@@ -241,7 +258,11 @@ namespace C__Spiel_Janjao
         }
         private void enemyspawn()
         {
-
+            Enemy2.Location = new Point(10, 10);
+            Enemy2.Size = new Size(100, 100);
+            this.Controls.Add(Enemy2);
+            Enemy2.BackColor = Color.Blue;
+            Enemy2.Visible = true;
         }
 
 

@@ -101,10 +101,6 @@
             regentimer.Interval = 1000;
             regentimer.Tick += regentimer_Tick;
             // 
-            // TimerEnemySpawn
-            // 
-            TimerEnemySpawn.Interval = 1000;
-            // 
             // Start
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
