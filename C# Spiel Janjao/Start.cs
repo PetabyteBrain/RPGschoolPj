@@ -5,9 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace C__Spiel_Janjao
 {
@@ -47,6 +49,7 @@ namespace C__Spiel_Janjao
         {
             InitializeComponent();
             UpdatePlayerHealthLabel();
+            Wall(150, 150);
             UpdateHealthLabel();
             this.KeyPreview = true;
             this.KeyDown += MoveControl;
@@ -55,10 +58,37 @@ namespace C__Spiel_Janjao
             timer1.Tick += timer1_Tick;
             timer1.Start();
             regentimer.Start();
+
         }
         private void Close_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Wall(int xPos, int yPos)
+        {
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.BackColor = Color.Black;
+            pictureBox.Location = new Point(xPos, yPos);
+            pictureBox.Width = 50;
+            pictureBox.Height = 50;
+            Controls.Add(pictureBox);
+            if (movingRight && pictureBox1.Right + distance <= pictureBox.Width)
+            {
+                pictureBox1.Left = Math.Min(pictureBox.Width - pictureBox1.Width, pictureBox1.Left + distance);
+            }
+            if (movingLeft && pictureBox1.Left - distance >= 0)
+            {
+                pictureBox1.Left = Math.Max(0, pictureBox1.Left - distance);
+            }
+            if (movingDown && pictureBox1.Bottom + distance <= pictureBox.Height)
+            {
+                pictureBox1.Top = Math.Min(pictureBox.Height - pictureBox1.Height, pictureBox1.Top + distance);
+            }
+            if (movingUp && pictureBox1.Top - distance >= 75)
+            {
+                pictureBox1.Top = Math.Max(0, pictureBox1.Top - distance);
+            }
         }
 
         private void UpdateHealthLabelPosition()
@@ -263,6 +293,11 @@ namespace C__Spiel_Janjao
             this.Controls.Add(Enemy2);
             Enemy2.BackColor = Color.Blue;
             Enemy2.Visible = true;
+            if (enemy1dead)
+            {
+                pictureBox1 = new PictureBox();
+                pictureBox1.Location = new Point(50, 50);
+            }
         }
 
 
@@ -287,6 +322,7 @@ namespace C__Spiel_Janjao
 
         }
 
+
         private void regentimer_Tick(object sender, EventArgs e)
         {
             int regentick = 0;
@@ -295,7 +331,7 @@ namespace C__Spiel_Janjao
                 regen();
                 regentick += 1;
             }
-            if(regentick == 1)
+            if (regentick == 1)
             {
                 regentick -= 1;
             }
@@ -326,9 +362,9 @@ namespace C__Spiel_Janjao
             }
         }
 
-        private void timer1_Tick_1(object sender, EventArgs e)
+        private void EnemyDMG_tick_Tick(object sender, EventArgs e)
         {
-
+             
         }
     }
 }

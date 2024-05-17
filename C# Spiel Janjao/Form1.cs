@@ -36,8 +36,7 @@ namespace C__Spiel_Janjao
         // LÖSCH DENN Form1_Load NICHT SONST GEHT ES NICHT MEHR
         private void Form1_Load(object sender, EventArgs e)
         {
-
-
+            
         }
     }
 }
