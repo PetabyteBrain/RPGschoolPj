@@ -293,10 +293,16 @@ namespace C__Spiel_Janjao
             this.Controls.Add(Enemy2);
             Enemy2.BackColor = Color.Blue;
             Enemy2.Visible = true;
-            if (enemy1dead)
+            XPamount += 50;
+            UpdateXPLabel();
+            if (enemy1dead == true)
             {
-                pictureBox1 = new PictureBox();
-                pictureBox1.Location = new Point(50, 50);
+                enemy1dead = false;
+                pictureBox2.Location = new Point(50, 50);
+                pictureBox2.Size = new Size(100, 100);
+                this.Controls.Add(pictureBox2);
+                pictureBox2.BackColor = Color.Yellow;
+                pictureBox2.Visible = true;
             }
         }
 

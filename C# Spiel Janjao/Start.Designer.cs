@@ -37,11 +37,9 @@
             label1 = new Label();
             regentimer = new System.Windows.Forms.Timer(components);
             TimerEnemySpawn = new System.Windows.Forms.Timer(components);
-            pictureBox3 = new PictureBox();
             EnemyDMG_tick = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // Close
@@ -106,16 +104,7 @@
             // 
             // TimerEnemySpawn
             // 
-            TimerEnemySpawn.Interval = 1000;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackgroundImage = Properties.Resources.sanspic50;
-            pictureBox3.Location = new Point(136, 240);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(50, 50);
-            pictureBox3.TabIndex = 9;
-            pictureBox3.TabStop = false;
+            TimerEnemySpawn.Enabled = true;
             // 
             // EnemyDMG_tick
             // 
@@ -126,7 +115,6 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(942, 493);
-            Controls.Add(pictureBox3);
             Controls.Add(label1);
             Controls.Add(healthLabel);
             Controls.Add(pictureBox2);
@@ -140,7 +128,6 @@
             KeyUp += MoveControl;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
